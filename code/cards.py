@@ -31,3 +31,7 @@ def csv_string_to_cards(csv_string: str)->list[Card]:
             if len(pre_card) ==2:
                 card_list.append(Card(pre_card[0], pre_card[1]))
     return card_list
+
+def convert_csv_into_cards(file_path: str)->list[Card]:
+    csv_content = get_csv_content(file_path)
+    return csv_string_to_cards(csv_content)

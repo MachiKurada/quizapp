@@ -1,5 +1,5 @@
 import unittest
-from cards import Card, csv_string_to_cards
+from cards import Card, csv_string_to_cards, convert_csv_into_cards
 
 class TestCsvStringToCards(unittest.TestCase):
     def test_happy_path_csv_to_cards(self):
@@ -29,6 +29,22 @@ class TestCsvStringToCards(unittest.TestCase):
         first_line_too_much_commas = "pretty, joli, charmant, mignon, beau\nblack,noir\n"
         too_much_commas_one_card = [Card("black", "noir")]
         self.assertEqual(csv_string_to_cards(first_line_too_much_commas), too_much_commas_one_card)
+
+class TestCsvToCards(unittest.TestCase):
+    def test_convert_csv_into_cards(self):
+        path = "./cards/base_test_cards.csv"
+        cards = [
+            Card("red", "rouge"),
+            Card("blue", "bleu"), 
+            Card("green", "vert"), 
+            Card("yellow", "jaune"), 
+            Card("orange", "orange"), 
+            Card("purple", "violet"),
+            Card("pink", "rose"),
+            Card("black", "noir")
+            ]
+        self.assertEqual(convert_csv_into_cards(path), cards)
+    
 
 
 
