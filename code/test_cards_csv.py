@@ -11,8 +11,24 @@ class TestCsvStringToCards(unittest.TestCase):
         solo_card = [Card("yellow", "jaune")]
         self.assertEqual(csv_string_to_cards(solo_csv), solo_card)
         #empty string
+        empty_csv = ""
+        empty_card = []
+        one_empty_line = "orange,orange\n\npurple,violet"
+        one_empty_card = [Card("orange", "orange"), Card("purple", "violet")]
+        self.assertEqual(csv_string_to_cards(empty_csv), empty_card)
+        self.assertEqual(csv_string_to_cards(one_empty_line), one_empty_card)
         #no comma on a line
+        not_csv = "La vie en couleur\nLife in color"
+        self.assertEqual(csv_string_to_cards(not_csv), empty_card)
+        one_wrong_line_csv = "pink,rose\nwtf is perwinkel\n"
+        one_wrong_line_cards = [Card("pink", "rose")]
+        self.assertEqual(csv_string_to_cards(one_wrong_line_csv), one_wrong_line_cards)
         #too much commas on a line
+        three_commas_one_line_csv = "brown, marron, beige"
+        self.assertEqual(csv_string_to_cards(three_commas_one_line_csv), empty_card)
+        first_line_too_much_commas = "pretty, joli, charmant, mignon, beau\nblack,noir\n"
+        too_much_commas_one_card = [Card("black", "noir")]
+        self.assertEqual(csv_string_to_cards(first_line_too_much_commas), too_much_commas_one_card)
 
 
 
