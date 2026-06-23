@@ -16,7 +16,7 @@ class Deck:
 def create_deck_from_csv(file_path: str)->Deck:
     if os.path.isfile(file_path) and file_path.endswith(".csv"):
         cards = convert_csv_into_cards(file_path)
-        name = os.path.basename(file_path)
+        name = os.path.basename(file_path).replace(".csv","")
         return Deck(name, cards)
     else:
         raise ValueError("Not a proper path name")
