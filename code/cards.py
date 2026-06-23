@@ -18,7 +18,7 @@ def get_csv_content(file_path: str)->str:
             csv_content = f.read()
         return csv_content
     else:
-        raise ValueError
+        raise ValueError("Not a proper path name")
     
 def csv_string_to_cards(csv_string: str)->list[Card]:
     if len(csv_string) == 0:

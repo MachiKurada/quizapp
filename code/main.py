@@ -1,10 +1,10 @@
 #this is the program that will run.
 
-from cards import Card, get_csv_content
+from decks import create_deck_from_csv
 
 def main ():
-    print(get_csv_content("./cards/base_test_cards.csv"))
-    print(get_csv_content("./cards"))
+    print(create_deck_from_csv("./cards/base_test_cards.csv"))
+    print(create_deck_from_csv("./cards"))
 
     
 
